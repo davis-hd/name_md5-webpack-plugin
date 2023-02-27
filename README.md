@@ -20,9 +20,27 @@ const Name_md5Plugin = require('name_md5-webpack-plugin');
 export default {
   plugins: [
     new Name_md5Plugin({
-      source: 'dist', 
+      source: 'dist',
       destination: 'dist/tofile.zip',
     }),
   ],
-};
+}
+
+# or
+// vue.config.js:
+module.exports = {
+  configureWebpack: {
+    plugins: [
+      new Name_md5WebpackPlugin({
+        source: "dist",
+        destination: "dist/tofile.zip",
+      }),
+    ],
+  },
+}
 ```
+
+**Options**
+
+- source[`string`] - 需要压缩的文件夹
+- destination[`string`] - 输出在该目录下的压缩文件
