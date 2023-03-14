@@ -11,6 +11,9 @@
   ],
   "author": "davis",
   "license": "ISC",
+  "repository": "https://github.com/davis-hd/name_md5-webpack-plugin.git",
+  "bugs": "https://github.com/davis-hd/name_md5-webpack-plugin/issues",
+  "homepage": "https://github.com/davis-hd/name_md5-webpack-plugin#readme",
   "dependencies": {
     "filemanager-webpack-plugin": "^8.0.0"
   }

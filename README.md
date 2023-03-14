@@ -22,18 +22,21 @@ export default {
     new Name_md5Plugin({
       source: 'dist',
       destination: 'dist/tofile.zip',
+      openUrl: 'https://baidu.com'
     }),
   ],
 }
 
 # or
+
 // vue.config.js:
 module.exports = {
   configureWebpack: {
     plugins: [
-      new Name_md5WebpackPlugin({
+      new Name_md5Plugin({
         source: "dist",
         destination: "dist/tofile.zip",
+        openUrl: 'https://baidu.com'
       }),
     ],
   },
@@ -44,3 +47,4 @@ module.exports = {
 
 - source[`string`] - 需要压缩的文件夹
 - destination[`string`] - 输出在该目录下的压缩文件
+- openUrl[`string`] - 打包完成后默认浏览器打开地址

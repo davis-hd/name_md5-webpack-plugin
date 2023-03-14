@@ -1,9 +1,11 @@
 const FileManagerPlugin = require("filemanager-webpack-plugin")
 const fs = require("fs")
 const crypto = require("crypto")
+const { exec } = require("child_process")
 
 class Name_md5WebpackPlugin {
-  constructor({ source, destination }) {
+  constructor({ source, destination, openUrl }) {
+    this.openUrl = openUrl
     this.source = source
     this.destination = destination.endsWith(".zip")
       ? destination
@@ -11,6 +13,7 @@ class Name_md5WebpackPlugin {
   }
 
   apply(compiler) {
+    if (compiler.options.mode !== 'production') return
     new FileManagerPlugin({
       events: {
         onEnd: {
@@ -32,6 +35,18 @@ class Name_md5WebpackPlugin {
         const outputDir = this.destination.replace(".zip", `_${md5}.zip`)
         fs.renameSync(this.destination, outputDir)
       })
+      if (this.openUrl) {
+        switch (process.platform) {
+          case "darwin":
+            exec(`open ${this.openUrl}`)
+            break
+          case "win32":
+            exec(`start ${this.openUrl}`)
+            break
+          default:
+            exec(`xdg-open ${this.openUrl}`)
+        }
+      }
     })
   }
 }
