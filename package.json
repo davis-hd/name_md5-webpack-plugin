@@ -1,6 +1,6 @@
 {
   "name": "name_md5-webpack-plugin",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "build name_md5.zip",
   "main": "src/index.js",
   "scripts": {
